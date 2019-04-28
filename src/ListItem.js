@@ -9,10 +9,12 @@ library.add(faTrash);
 
 const getContainerClass = (isActive) => isActive ? "active-list-item" : "finished-list-item";
 const getTextClass = (isActive) => isActive ? "active-list-item-text" : "finished-list-item-text";
+const getButtonClass = (isActive) => isActive ? "active-button" : "finished-button";
+const getIconClass = (isActive) => isActive ? "delete-button" : "finish-delete-button";
 
 class ListItem extends Component {
     render() {
-        const {item, isActive, onClick} = this.props;
+        const {item, isActive, onClick, onClickDelete} = this.props;
 
         return (
             <div className={getContainerClass(isActive)}>
@@ -22,7 +24,7 @@ class ListItem extends Component {
                 {
                     isActive ?
                         <button
-                            className="active-button"
+                            className={getButtonClass(isActive)}
                             onClick={() => onClick(item)}
                         >
                             <FontAwesomeIcon
@@ -33,7 +35,7 @@ class ListItem extends Component {
                         :
                         <div>
                             <button
-                                className="finished-button"
+                                className={getButtonClass(isActive)}
                                 onClick={() => onClick(item)}
                             >
                                 <FontAwesomeIcon
@@ -42,10 +44,12 @@ class ListItem extends Component {
                                 />
                             </button>
                             <button
-                                className="finished-button"
-                                onClick={() => console.log('Not implemented yet!')}
+                                 className={getButtonClass(isActive)}
+                                // className={getButtonClass(isActive)}
+                                onClick={() => onClickDelete(item)}
                             >
                                 <FontAwesomeIcon
+                                    className={getIconClass(isActive)}
                                     color="#eeeeee"
                                     icon="trash"
                                 />
