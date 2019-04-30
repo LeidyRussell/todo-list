@@ -9,8 +9,6 @@ library.add(faTrash);
 
 const getContainerClass = (isActive) => isActive ? "active-list-item" : "finished-list-item";
 const getTextClass = (isActive) => isActive ? "active-list-item-text" : "finished-list-item-text";
-const getButtonClass = (isActive) => isActive ? "active-button" : "finished-button";
-const getIconClass = (isActive) => isActive ? "delete-button" : "finish-delete-button";
 
 class ListItem extends Component {
     render() {
@@ -24,7 +22,7 @@ class ListItem extends Component {
                 {
                     isActive ?
                         <button
-                            className={getButtonClass(isActive)}
+                            className="active-button"
                             onClick={() => onClick(item)}
                         >
                             <FontAwesomeIcon
@@ -35,7 +33,7 @@ class ListItem extends Component {
                         :
                         <div>
                             <button
-                                className={getButtonClass(isActive)}
+                                className="finished-button"
                                 onClick={() => onClick(item)}
                             >
                                 <FontAwesomeIcon
@@ -44,12 +42,11 @@ class ListItem extends Component {
                                 />
                             </button>
                             <button
-                                 className={getButtonClass(isActive)}
-                                // className={getButtonClass(isActive)}
+                                className="finished-button"
                                 onClick={() => onClickDelete(item)}
                             >
                                 <FontAwesomeIcon
-                                    className={getIconClass(isActive)}
+                                    className="finished-button"
                                     color="#eeeeee"
                                     icon="trash"
                                 />
